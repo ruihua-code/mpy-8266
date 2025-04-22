@@ -9,7 +9,7 @@ import asyncio
 
 # 配置常量
 HOST = const('0.0.0.0')
-PORT = const(8080)
+PORT = const(80)
 LISTEN_NUM = const(5)
 RECV_LENGTH = const(1024)
 RESPONSE = const('HTTP/1.0 200 OK\r\nContent-type:')
@@ -53,7 +53,7 @@ class ZrhSocket:
             path, query_params = self.parse_url(url)
 
             # 根据路径返回响应
-            if path == '/wifi_html_page':
+            if path == '/wifi':
                 response = self.wifi_html_page()
             elif path == '/save_wifi_config':
                 response = self.save_wifi_config(query_params)

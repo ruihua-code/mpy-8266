@@ -2,6 +2,7 @@ import network
 import time
 from zrh_server import ZrhSocket
 from zrh_wifi_config import WifiConfigFile
+from zrh_ap import ZrhAp
 
 
 wlan = network.WLAN(network.STA_IF)
@@ -20,6 +21,8 @@ while not wlan.isconnected():
     time.sleep(1)
     if connectCount > 10:
         print("connect timeout")
+        zrhAp = ZrhAp()
+        zrhAp.start_server()
         break
     if wlan.isconnected():
         print("connect success:", wlan.ifconfig())
